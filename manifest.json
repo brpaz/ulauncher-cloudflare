@@ -1,0 +1,31 @@
+{
+    "manifest_version": "2",
+    "api_version": "1",
+    "name": "Cloudflare",
+    "description": "Quickly access your Cloudflare accounts from Ulauncher",
+    "developer_name": "Bruno Paz",
+    "icon": "images/icon.png",
+    "options": {
+        "query_debounce": 0.1
+    },
+    "preferences": [{
+            "id": "ext_kw",
+            "type": "keyword",
+            "name": "Cloudflare",
+            "default_value": "cf"
+        },
+        {
+            "id": "email",
+            "type": "input",
+            "name": "Email",
+            "description": "The email you use to login in your CloudFlare account",
+            "default_value": ""
+        }, {
+            "id": "api_key",
+            "type": "input",
+            "name": "Api Key",
+            "description": "The API key to authenticate in the Cloudflare API",
+            "default_value": ""
+        }
+    ]
+}
