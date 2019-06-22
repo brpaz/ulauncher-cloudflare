@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/github/license/brpaz/ulauncher-cloudflare.svg?style=for-the-badge)
 
 
-> Ulauncher extension for quickly access to your CloudFlare Zones Configuration.
+> Ulauncher extension that provides quick access to your Cloudflare domains.
 
 ## Demo
 
