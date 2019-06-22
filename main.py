@@ -1,6 +1,10 @@
-"""Ulauncher extension main class"""
+"""
+Ulauncher CloudFlare extension
+This extension allows you to access your cloudflare domains directly from Ulauncher
+"""
 
 import logging
+import CloudFlare
 
 from ulauncher.api.client.Extension import Extension
 from ulauncher.api.client.EventListener import EventListener
@@ -9,7 +13,6 @@ from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
 from ulauncher.api.shared.action.OpenUrlAction import OpenUrlAction
 from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
-import CloudFlare
 
 LOGGER = logging.getLogger(__name__)
 
@@ -35,7 +38,7 @@ class CloudFlareExtension(Extension):
 class KeywordQueryEventListener(EventListener):
     """ Handles Keyboard input """
 
-    def on_event(self, event, extension):
+    def on_event(self, event, extension):  # pylint: disable=unused-argument
         """ Handles the event """
 
         items = []
@@ -67,6 +70,7 @@ class PreferencesEventListener(EventListener):
     """
 
     def on_event(self, event, extension):
+        """ Handles Preferences change event """
         extension.cf_client = CloudFlare.CloudFlare(
             email=event.preferences['email'],
             token=event.preferences['api_key']
@@ -80,6 +84,7 @@ class PreferencesUpdateEventListener(EventListener):
     """
 
     def on_event(self, event, extension):
+        """ Handles Prefences Update event """
         if event.id == 'api_key':
             extension.cf_client = CloudFlare.CloudFlare(
                 email=extension.preferences['email'],
