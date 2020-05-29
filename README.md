@@ -1,7 +1,7 @@
 # Ulauncher Cloudflare
 
 [![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-green.svg?style=for-the-badge)](https://ext.ulauncher.io/-/github-brpaz-ulauncher-cloudflare)
-![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-cloudflare/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz7ulauncher-cloudflar3e)
+[![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-cloudflare/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz7ulauncher-cloudflare)
 ![License](https://img.shields.io/github/license/brpaz/ulauncher-cloudflare.svg?style=for-the-badge)
 
 > Ulauncher extension that provides quick access to your Cloudflare sites.
@@ -14,14 +14,15 @@
 
 * [ulauncher 5](https://ulauncher.io/)
 * Python >= 3
-* CloudFlare Python package (```sudo pip install cloudflare```)
+* [CloudFlare](https://github.com/cloudflare/python-cloudflare) Python package
+  * Install with pip or pip3 depending of your system ```sudo pip install cloudflare```)
 * A [CloudFlare](https://cloudflare.com) account and an API Key.
 
 ## Install
 
 Open ulauncher preferences window -> extensions -> add extension and paste the following url:
 
-```<%= https://github.com/brpaz/ulauncher-cloudflare %>```
+```https://github.com/brpaz/ulauncher-cloudflare```
 
 ## Usage
 
