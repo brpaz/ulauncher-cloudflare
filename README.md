@@ -1,11 +1,10 @@
 # Ulauncher Cloudflare
 
 [![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-green.svg?style=for-the-badge)](https://ext.ulauncher.io/-/github-brpaz-ulauncher-cloudflare)
-[![CircleCI](https://img.shields.io/circleci/build/github/brpaz/ulauncher-cloudflare.svg?style=for-the-badge)](https://circleci.com/gh/brpaz/ulauncher-cloudflare)
+![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-cloudflare/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz7ulauncher-cloudflar3e)
 ![License](https://img.shields.io/github/license/brpaz/ulauncher-cloudflare.svg?style=for-the-badge)
 
-
-> Ulauncher extension that provides quick access to your Cloudflare domains.
+> Ulauncher extension that provides quick access to your Cloudflare sites.
 
 ## Demo
 
@@ -15,7 +14,7 @@
 
 * [ulauncher 5](https://ulauncher.io/)
 * Python >= 3
-* CloudFlare Python package (```pip install cloudflare```)
+* CloudFlare Python package (```sudo pip install cloudflare```)
 * A [CloudFlare](https://cloudflare.com) account and an API Key.
 
 ## Install
@@ -48,6 +47,6 @@ Contributions, issues and Features requests are welcome.
 
 ## License
 
-Copywright @ 2019 [Bruno Paz](https://github.com/brpaz)
+Copywright @ 2020 [Bruno Paz](https://github.com/brpaz)
 
 This project is [MIT](LLICENSE) Licensed.
