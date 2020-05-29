@@ -19,7 +19,6 @@ LOGGER = logging.getLogger(__name__)
 
 class CloudFlareExtension(Extension):
     """ Main extension class """
-
     def __init__(self):
         """ init method """
         LOGGER.info('Initializing CloudFlare Extension')
@@ -34,33 +33,58 @@ class CloudFlareExtension(Extension):
         self.subscribe(PreferencesUpdateEvent,
                        PreferencesUpdateEventListener())
 
+    def get_zones(self, event):
+        """ Returns the list of Zones from Cloudflare """
+        items = []
+
+        query = event.get_argument() or ""
+
+        zones = self.cf_client.zones.get()
+
+        for zone in zones:
+
+            if query.lower() not in zone["name"].lower():
+                continue
+
+            url = "https://dash.cloudflare.com/%s/%s" % (zone["account"]['id'],
+                                                         zone["name"])
+            items.append(
+                ExtensionResultItem(icon='images/icon.png',
+                                    name=zone["name"],
+                                    description=zone["status"],
+                                    on_enter=OpenUrlAction(url)))
+
+        if not items:
+            items.append(
+                ExtensionResultItem(
+                    icon='images/icon.png',
+                    name='No results found matching your criteria',
+                    highlightable=False))
+
+        return items
+
 
 class KeywordQueryEventListener(EventListener):
     """ Handles Keyboard input """
-
     def on_event(self, event, extension):  # pylint: disable=unused-argument
         """ Handles the event """
 
         items = []
+
         try:
-            zones = extension.cf_client.zones.get()
+            items = extension.get_zones(event)
 
-            for zone in zones:
-                url = "https://dash.cloudflare.com/%s/%s" % (
-                    zone["account"]['id'], zone["name"])
-                items.append(ExtensionResultItem(icon='images/icon.png',
-                                                 name=zone["name"],
-                                                 description=zone["status"],
-                                                 on_enter=OpenUrlAction(url)))
-        except CloudFlare.exceptions.CloudFlareError as e:  # pylint: disable=invalid-name
+        except CloudFlare.exceptions.CloudFlareError as e:
             LOGGER.error(e)
-            items.append(ExtensionResultItem(icon='images/icon.png',
-                                             name="CloudFlare API error",
-                                             description="Error %s : %s" % (
-                                                 e.evalue.code, e.evalue.message),
-                                             on_enter=HideWindowAction()))
+            items.append(
+                ExtensionResultItem(icon='images/icon.png',
+                                    name="CloudFlare API error",
+                                    description="Error %s : %s" %
+                                    (e.evalue.code, e.evalue.message),
+                                    on_enter=HideWindowAction(),
+                                    highlightable=False))
 
-        return RenderResultListAction(items)
+        return RenderResultListAction(items[:8])
 
 
 class PreferencesEventListener(EventListener):
@@ -68,13 +92,11 @@ class PreferencesEventListener(EventListener):
     Listener for prefrences event.
     It is triggered on the extension start with the configured preferences
     """
-
     def on_event(self, event, extension):
         """ Handles Preferences change event """
         extension.cf_client = CloudFlare.CloudFlare(
             email=event.preferences['email'],
-            token=event.preferences['api_key']
-        )
+            token=event.preferences['api_key'])
 
 
 class PreferencesUpdateEventListener(EventListener):
@@ -82,19 +104,14 @@ class PreferencesUpdateEventListener(EventListener):
     Listener for "Preferences Update" event.
     It is triggered when the user changes any setting in preferences window
     """
-
     def on_event(self, event, extension):
         """ Handles Prefences Update event """
         if event.id == 'api_key':
             extension.cf_client = CloudFlare.CloudFlare(
-                email=extension.preferences['email'],
-                token=event.new_value
-            )
+                email=extension.preferences['email'], token=event.new_value)
         elif event.id == 'email':
             extension.cf_client = CloudFlare.CloudFlare(
-                email=event.new_value,
-                token=extension.preferences['api_key']
-            )
+                email=event.new_value, token=extension.preferences['api_key'])
 
 
 if __name__ == '__main__':
