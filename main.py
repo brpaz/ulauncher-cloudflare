@@ -33,8 +33,8 @@ class CloudFlareExtension(Extension):
         self.subscribe(PreferencesUpdateEvent,
                        PreferencesUpdateEventListener())
 
-    def getZones(self, event):
-        """ init method """
+    def get_zones(self, event):
+        """ Returns the list of Zones from Cloudflare """
         items = []
 
         query = event.get_argument() or ""
@@ -72,7 +72,7 @@ class KeywordQueryEventListener(EventListener):
         items = []
 
         try:
-            items = extension.getZones()
+            items = extension.get_zones(event)
 
         except CloudFlare.exceptions.CloudFlareError as e:
             LOGGER.error(e)
