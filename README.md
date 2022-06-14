@@ -25,8 +25,6 @@ cd ~/.local/share/ulauncher/extensions/com.github.brpaz.ulauncher-cloudflare
 pip install -r requirements.txt
 ```
 
-```
-
 ## Install
 
 Open ulauncher preferences window -> extensions -> add extension and paste the following url:
