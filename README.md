@@ -1,10 +1,10 @@
 # Ulauncher Cloudflare
 
+> Ulauncher extension that provides quick access to your Cloudflare sites.
+
 [![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-green.svg?style=for-the-badge)](https://ext.ulauncher.io/-/github-brpaz-ulauncher-cloudflare)
 ![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-cloudflare/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz7ulauncher-cloudflar3e)
 ![License](https://img.shields.io/github/license/brpaz/ulauncher-cloudflare.svg?style=for-the-badge)
-
-> Ulauncher extension that provides quick access to your Cloudflare sites.
 
 ## Demo
 
@@ -14,8 +14,18 @@
 
 * [ulauncher 5](https://ulauncher.io/)
 * Python >= 3
-* CloudFlare Python package (```sudo pip install cloudflare```)
-* A [CloudFlare](https://cloudflare.com) account and an API Key.
+* A [CloudFlare](https://cloudflare.com) account and an API token. (https://dash.cloudflare.com/profile/api-tokens)
+
+For this extension to work, the [python-cloudflare](https://github.com/cloudflare/python-cloudflare) Python package must be installed on your system.
+
+You can install the correct version, by running the following command in the terminal after you downloaded the extension:
+
+```bash
+cd ~/.local/share/ulauncher/extensions/com.github.brpaz.ulauncher-cloudflare
+pip install -r requirements.txt
+```
+
+```
 
 ## Install
 
@@ -25,8 +35,13 @@ Open ulauncher preferences window -> extensions -> add extension and paste the f
 
 ## Usage
 
-Before using the plugin, you must configure your Cloudflare account in the plugin settings, by adding your user email and an API Key.
-You can get your API key, on "My Profile" page in CloudFlare.
+Before using the plugin, you must configure your Cloudflare account in the plugin settings, by adding your API Token
+You can get yours from your CloudFlare account [here](https://dash.cloudflare.com/profile/api-tokens).
+
+⚠️ **In previous versions of this extension, we used API key and email for user authentication. This was changed to a simpler API tokens. If you had an older version of this extension installed, please ensure that you have the correct configurations.**
+
+Next, simply type `cloudflare` on the ulauncher input bar, to access the extension.
+
 
 ## Development
 
