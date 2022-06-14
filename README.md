@@ -3,7 +3,7 @@
 > Ulauncher extension that provides quick access to your Cloudflare sites.
 
 [![Ulauncher Extension](https://img.shields.io/badge/Ulauncher-Extension-green.svg?style=for-the-badge)](https://ext.ulauncher.io/-/github-brpaz-ulauncher-cloudflare)
-![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-cloudflare/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz7ulauncher-cloudflar3e)
+[![CI Status](https://img.shields.io/github/workflow/status/brpaz/ulauncher-cloudflare/CI?color=orange&label=actions&logo=github&logoColor=orange&style=for-the-badge)](https://github.com/brpaz7ulauncher-cloudflare)
 ![License](https://img.shields.io/github/license/brpaz/ulauncher-cloudflare.svg?style=for-the-badge)
 
 ## Demo
